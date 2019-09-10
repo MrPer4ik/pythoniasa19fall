@@ -86,4 +86,26 @@ That ate the malt
 That lay in the house that Jack built.
 '''
 
-print(poem)
+dict = {"the house that Jack built": "lay in",
+       "the malt": "ate",
+       "the rat": "killed",
+       "the cat": 'worried',
+       "the dog": "tossed",
+       "the cow with the crumpled horn": "milked",
+       "the maiden all forlorn": "kissed",
+       "the man all tatter'd and torn": 'married',
+       "the priest all shaven and shorn": "waked",
+       "the cock that crow'd in the morn": "kept",
+       "the farmer sowing his corn": 'is'}
+
+lst = list(dict.keys())
+
+for i in range(len(dict)):
+    for j in range(i, -1, -1):
+        if j == i:
+            print("This is " + lst[j] + ",")
+        else:
+            print("That " + dict[lst[j]] + " " + lst[j], end="")
+            print('.' if j == 0 else ',')
+    print('\n')
+
