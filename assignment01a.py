@@ -86,26 +86,23 @@ That ate the malt
 That lay in the house that Jack built.
 '''
 
-dict = {"the house that Jack built": "lay in",
-       "the malt": "ate",
-       "the rat": "killed",
-       "the cat": 'worried',
-       "the dog": "tossed",
-       "the cow with the crumpled horn": "milked",
-       "the maiden all forlorn": "kissed",
-       "the man all tatter'd and torn": 'married',
-       "the priest all shaven and shorn": "waked",
-       "the cock that crow'd in the morn": "kept",
-       "the farmer sowing his corn": 'is'}
+base = [["the house that Jack built", "lay in"],
+       ["the malt", "ate"],
+       ["the rat", "killed"],
+       ["the cat", 'worried'],
+       ["the dog", "tossed"],
+       ["the cow with the crumpled horn", "milked"],
+       ["the maiden all forlorn", "kissed"],
+       ["the man all tatter'd and torn", 'married'],
+       ["the priest all shaven and shorn", "waked"],
+       ["the cock that crow'd in the morn", "kept"],
+       ["the farmer sowing his corn", 'is']]
 
-lst = list(dict.keys())
-
-for i in range(len(dict)):
+for i in range(len(base)):
     for j in range(i, -1, -1):
         if j == i:
-            print("This is " + lst[j] + ",")
+            print("This is " + base[j][0] + ",")
         else:
-            print("That " + dict[lst[j]] + " " + lst[j], end="")
+            print("That " + base[j][1] + " " + base[j][0], end="")
             print('.' if j == 0 else ',')
-    print('\n')
-
+    print()
