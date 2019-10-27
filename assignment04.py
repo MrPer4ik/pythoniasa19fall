@@ -7,6 +7,7 @@ def task1(text):
     [89, 9, -789, 0, 1]
     """
     # todo: write your code here
+    return [int(i.strip()) for i in text.split(',')]
 
 
 def task2(text):
@@ -17,6 +18,7 @@ def task2(text):
     'apple pen pen pineapple'
     """
     # todo: write your code here
+    return ' '.join(sorted(text.split()))
 
 
 def task3(text):
@@ -30,9 +32,10 @@ def task3(text):
     {'digits': 0, 'letters': 26}
     """
     # todo: write your code here
+    return {'digits': len(set(i for i in text if i.isdigit())), 'letters': len(set(i for i in text if i.isalpha()))}
 
 
-def task4(digit):
+def task4(digit, n=4):
     """
     For any digit X from 0 to 9, calculate expression 'X + XX + XXX + XXXX'.
 
@@ -40,6 +43,7 @@ def task4(digit):
     [0, 1234, 2468, 3702, 4936, 6170, 7404, 8638, 9872, 11106]
     """
     # todo: write your code here
+    return sum([int(i * digit) for i in range(1, n + 1)])
 
 
 def task5(text, letter1, letter2):
@@ -60,6 +64,7 @@ def task5(text, letter1, letter2):
     False
     """
     # todo: write your code here
+    return -1 < text.rfind(letter1) < text.find(letter2)
 
 
 def task6(text, censored):
@@ -74,6 +79,10 @@ def task6(text, censored):
     'UPPERCASE'
     """
     # todo: write your code here
+    for i in censored:
+        text = text.replace('*', i, 1)
+    return text
+    # return ''.join(''.join(t) for y in zip(text.split('*'), [*censored, '']))
 
 
 def task7(text, words):
@@ -91,6 +100,8 @@ def task7(text, words):
     False
     """
     # todo: write your code here
+    import re
+    return re.findall(r'[' + text.lower() + r']+', '*'.join(words)) == [i.lower() for i in words]
 
 
 if __name__ == '__main__':
