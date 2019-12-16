@@ -5,11 +5,8 @@ import path
 from imutils.object_detection import non_max_suppression
 
 CASCADESFILE = 'data/haarcascades/haarcascade_frontalface_default.xml'
-EYESFILE = 'data/haarcascades/haarcascade_eye.xml'
+SMILEFILE = 'data/haarcascades/haarcascade_smile.xml'
 LOGFILE = 'build/faces.log'
-
-
-MIN_FACE_AREA = 5
 
 #path.Path('build').mkdir()
 logging.basicConfig(filename=LOGFILE, level='DEBUG')
@@ -34,14 +31,14 @@ def main():
         # convert image to grayscale
         grayframe = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-        #will add some blur to avoid false detection cause of noise 
+        # add blur
         grayframe = cv2.GaussianBlur(grayframe, (21, 21), 0)
 
         # detect faces
         faces = model.detectMultiScale(grayframe, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
         smile = modelesmile.detectMultiScale(grayframe, scaleFactor=1.1, minNeighbors=5, minSize=(10, 10))
         
-        # adding non_max_suppression to avoid overlapping rects
+        # adding non_max_suppression to avoid overlapping
         faces = non_max_suppression(faces, probs=None, overlapThresh=0.65)
         smile = non_max_suppression(smile, probs=None, overlapThresh=0.65)
 
