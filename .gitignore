@@ -102,3 +102,7 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+assignment05/__MACOSX
+assignment05/build
+assignment05/data
